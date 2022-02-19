@@ -1,0 +1,135 @@
+body{
+    margin: 0;
+    display: grid;
+    place-items: center;
+    background-color: darkred;
+    width: 100vw;
+    height: 100vh;
+}
+:root{
+    --box-size:100px;
+    --mark-size:calc(var(--box-size)*0.9);
+}
+
+
+.board{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.box{
+    width: var(--box-size);
+    height: var(--box-size);
+    border: 2px solid darksalmon;
+    /* overflow:visible; */
+    display: grid;
+    place-items: center;
+}
+.box:nth-child(3n){
+    border-right: none;
+}
+.box:nth-child(3n+1){
+    border-left: none;
+}
+.box:nth-child(1),.box:nth-child(2),.box:nth-child(3){
+    border-top: none;
+}
+.box:nth-child(7),.box:nth-child(8),.box:nth-child(9){
+    border-bottom: none;
+}
+
+/* X and O styles */
+.box.x::after,
+.box.x::before{
+    content: "";
+    display: inline-block;
+    width: var(--mark-size);
+    height: calc(var(--mark-size)*0.15);
+    background-color: darksalmon;
+    position: absolute;
+}
+.box.x::after{
+    rotate: 45deg;
+}
+.box.x::before{
+    rotate: -45deg;
+}
+.box.o::after,
+.box.o::before{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+}
+.box.o::before{
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: darksalmon;
+}
+.box.o::after{
+    --inner-circle-size:calc(var(--mark-size)*0.8);
+    width: var(--inner-circle-size);
+    height: var(--inner-circle-size);
+    background-color: darkred;
+}
+
+/* hovereffects */
+.board.cross .box:not(.x):not(.o):hover::after,
+.board.cross .box:not(.x):not(.o):hover::before{
+    content: "";
+    display: inline-block;
+    width: var(--mark-size);
+    height: calc(var(--mark-size)*0.15);
+    background-color: darksalmon;
+    position: absolute;
+    opacity: 0.3;
+}
+.board.cross .box:not(.x):not(.o):hover::after{
+    rotate: 45deg;
+}
+.board.cross .box:not(.x):not(.o):hover::before{
+    rotate: -45deg;
+}
+
+.board.circle .box:not(.x):not(.o):hover::after,
+.board.circle .box:not(.x):not(.o):hover::before{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+.board.circle .box:not(.x):not(.o):hover::before{
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: darksalmon;
+}
+.board.circle .box:not(.x):not(.o):hover::after{
+    --inner-circle-size:calc(var(--mark-size)*0.8);
+    width: var(--inner-circle-size);
+    height: var(--inner-circle-size);
+    background-color: darkred;
+    opacity: 1;
+}
+
+
+/* GAMEOVER/ENDING SCREEN  */
+.ending-screen{
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.404);
+    color: white;
+    position: absolute;
+}
+.ending-screen.game-over{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.ending-screen *{
+    display: inline-block;
+    width: 10%;
+}
