@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css">
+    <script src="helper.js"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="board">
+    <div class="board cross">
         <div class="box"></div>
         <div class="box"></div>
         <div class="box"></div>
@@ -20,9 +21,8 @@
         <div class="box"></div>
         <div class="box"></div>
     </div>
-    <div class="ending-screen">
-        <h3 id="winner-message">X Wins.</h3>
-        <button id="restart-btn">Restart</button>
+    <div class="overlay-screen">
+        <h3 id="overlay-message"></h3>
     </div>
 </body>
 </html>

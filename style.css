@@ -21,6 +21,7 @@ body{
     width: var(--box-size);
     height: var(--box-size);
     border: 2px solid darksalmon;
+    background-color: darkred;
     /* overflow:visible; */
     display: grid;
     place-items: center;
@@ -70,7 +71,7 @@ body{
     --inner-circle-size:calc(var(--mark-size)*0.8);
     width: var(--inner-circle-size);
     height: var(--inner-circle-size);
-    background-color: darkred;
+    background-color: inherit;
 }
 
 /* hovereffects */
@@ -114,7 +115,7 @@ body{
 
 
 /* GAMEOVER/ENDING SCREEN  */
-.ending-screen{
+.overlay-screen{
     width: 100vw;
     height: 100vh;
     display: none;
@@ -122,14 +123,14 @@ body{
     color: white;
     position: absolute;
 }
-.ending-screen.game-over{
+.overlay-screen.active{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
-.ending-screen *{
+.overlay-screen *{
     display: inline-block;
     width: 10%;
 }
